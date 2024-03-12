@@ -94,6 +94,8 @@ nav ul li img {
     gap: 10px;
     font-weight: 900;
     background: linear-gradient(230deg, rgb(161, 10, 211), blue);
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
