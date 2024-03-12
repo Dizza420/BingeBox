@@ -5,7 +5,7 @@ body {
     padding: 0;
     font-family: 'Lato', sans-serif;
     overflow-x: hidden;
-    background-color: rgb(23, 23, 23);
+    background-color: #0F0919;
 }
 ::-webkit-scrollbar{
     background-color: transparent;
@@ -13,26 +13,52 @@ body {
     width: 10px;
 }
 ::-webkit-scrollbar-thumb{
-    background-color: rgb(5, 3, 134);
+    background-color: #2d2c2c;
 }
 nav {
-    padding: 10px;
+    margin: 10px;
+    padding:0 15px;
+    border-radius: 30px;
     box-sizing: border-box;
-    background-color: black;
+    background:linear-gradient(to right, rgba(22, 0, 59, 1), rgba(34, 0, 50, 1));
     /* Change  background color of the navigation bar*/
     color: aliceblue;
     /* Change  text color of the navigation bar*/
     display: flex;
+    justify-content: center;
     align-items: center;
 }
+nav textarea{
+    margin-left: auto;
+    width: 500px;
+    box-sizing: border-box;
+padding: 10px;
+    background-color: #31065A;
+    border-radius: 50px;
+    border:none ;
+    resize: none;
+}
+nav textarea::-webkit-scrollbar{
+    display: none;
+}
+nav textarea:focus-visible{
+   outline:none;
+}
+nav textarea::placeholder{
 
+    color: #6b13bd;
+    font-weight: 700;
+    font-family: 'Poppins',sans-serif;
+}
 nav ul {
+    display: flex;
+    align-items: center;
     margin-left: auto;
     list-style-type: none;
 }
 
 nav ul li {
-    margin: 5px;
+    margin:0 20px;
     display: inline;
 }
 
@@ -40,7 +66,9 @@ nav ul li a {
     color: white;
     text-decoration: none;
 }
-
+nav ul li img{
+    height: 50px;
+}
 #Title {
     display: flex;
     align-items: center;
@@ -60,7 +88,7 @@ nav ul li a {
 }
 
 .featured {
-    margin: 10px;
+    margin: 30px 50px;
     display: flex;
     font-size: 20px;
     flex-direction: column;
@@ -73,13 +101,25 @@ nav ul li a {
     background-size: cover;
     justify-content: end;
 }
-
-.featured p {
+.featured-name{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.featured-name img{
+    height: 50px;
+}
+.featured .genres span{
+    color: green;
+    font-weight: 700;
+    margin-right: 10px;
+}
+.featured .overview {
     height: 100px;
     overflow: scroll;
     width: 500px;
 }
-.featured p::-webkit-scrollbar{
+.featured .overview::-webkit-scrollbar{
     display: none;
 }
 
@@ -173,19 +213,20 @@ nav ul li a {
 
 .card>img {
     height: 300px;
-    border-radius: 10px 10px 0 0;
+    border-radius: 20px;
 }
 
 .movieDesc {
     position: relative;
-    top: -50px;
+    top: -70px;
     font-size: 20px;
     padding: 10px;
+    border-radius: 0 20px 20px;
     overflow-y: hidden;
     gap: 10px;
     display: flex;
     height: 50px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000ca, #161416 99%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000ca, #000000 99%);
     color: #d4d4d4;
     align-items: center;
 }
