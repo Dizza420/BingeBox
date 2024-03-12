@@ -7,20 +7,23 @@ body {
     overflow-x: hidden;
     background-color: #0F0919;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     background-color: transparent;
     height: 10px;
     width: 10px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     background-color: #2d2c2c;
 }
+
 nav {
     margin: 10px;
-    padding:0 15px;
+    padding: 0 15px;
     border-radius: 30px;
     box-sizing: border-box;
-    background:linear-gradient(to right, rgba(22, 0, 59, 1), rgba(34, 0, 50, 1));
+    background: linear-gradient(to right, rgba(22, 0, 59, 1), rgba(34, 0, 50, 1));
     /* Change  background color of the navigation bar*/
     color: aliceblue;
     /* Change  text color of the navigation bar*/
@@ -28,28 +31,42 @@ nav {
     justify-content: center;
     align-items: center;
 }
-nav textarea{
+
+nav textarea {
     margin-left: auto;
     width: 500px;
     box-sizing: border-box;
-padding: 10px;
+    padding: 10px;
+    color: #ffffff;
     background-color: #31065A;
-    border-radius: 50px;
-    border:none ;
+    border-radius: 50px 0 0 50px;
+    border: none;
     resize: none;
 }
-nav textarea::-webkit-scrollbar{
+
+nav textarea::-webkit-scrollbar {
     display: none;
 }
-nav textarea:focus-visible{
-   outline:none;
+
+nav textarea:focus-visible {
+    outline: none;
 }
-nav textarea::placeholder{
+
+nav textarea::placeholder {
 
     color: #6b13bd;
     font-weight: 700;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
+
+nav button {
+    border: none;
+    background-color: #31065A;
+    color: #eeeeee;
+    height: 36.08px;
+    border-radius: 0 50px 50px 0;
+}
+
 nav ul {
     display: flex;
     align-items: center;
@@ -58,7 +75,7 @@ nav ul {
 }
 
 nav ul li {
-    margin:0 20px;
+    margin: 0 20px;
     display: inline;
 }
 
@@ -66,9 +83,11 @@ nav ul li a {
     color: white;
     text-decoration: none;
 }
-nav ul li img{
+
+nav ul li img {
     height: 50px;
 }
+
 #Title {
     display: flex;
     align-items: center;
@@ -101,25 +120,30 @@ nav ul li img{
     background-size: cover;
     justify-content: end;
 }
-.featured-name{
+
+.featured-name {
     display: flex;
     gap: 10px;
     align-items: center;
 }
-.featured-name img{
+
+.featured-name img {
     height: 50px;
 }
-.featured .genres span{
+
+.featured .genres span {
     color: green;
     font-weight: 700;
     margin-right: 10px;
 }
+
 .featured .overview {
     height: 100px;
     overflow: scroll;
     width: 500px;
 }
-.featured .overview::-webkit-scrollbar{
+
+.featured .overview::-webkit-scrollbar {
     display: none;
 }
 
@@ -194,9 +218,10 @@ nav ul li img{
     z-index: 2;
     width: fit-content;
 
+    background-size: cover;
     border-radius: 10px;
 
-    height: fit-content;
+    height: 300px;
 
     transition: scale 0.9s;
 }
@@ -218,17 +243,27 @@ nav ul li img{
 
 .movieDesc {
     position: relative;
-    top: -70px;
+    top: -210px;
     font-size: 20px;
     padding: 10px;
     border-radius: 0 20px 20px;
     overflow-y: hidden;
-    gap: 10px;
     display: flex;
-    height: 50px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000ca, #000000 99%);
+    flex-direction: column;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.513), #000000);
+    justify-content: end;
     color: #d4d4d4;
-    align-items: center;
+
+}
+
+.movieDesc p {
+    margin: 0;
+
+}
+
+.vote {
+    color: green;
 }
 
 .overview {

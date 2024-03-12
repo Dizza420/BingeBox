@@ -1,6 +1,7 @@
 const topRated = 'https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=';
 const popular = 'https://api.themoviedb.org/3/tv/popular?language=en-US&page=';
 const tv = 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&sort_by=popularity.desc&page=';
+const image = "https://image.tmdb.org/t/p/original"
 const options = {
     method: 'GET',
     headers: {
@@ -28,9 +29,9 @@ let genres = {
     53: "Thriller",
     10752: "War",
     37: "Western",
-    10759: "Action & Adventure", 
+    10759: "Action & Adventure",
     10762: "Kids",
-    10763: "News", 
+    10763: "News",
     10764: "Reality",
     10765: "Sci-Fi & Fantasy",
     10766: "Soap",
@@ -45,14 +46,14 @@ fetch(topRated + String(Math.floor(Math.random() * 10) + 1), options)
         let randomIndex = Math.floor(Math.random() * response.results.length);
         let randomBackdropPath = response.results[randomIndex].backdrop_path;
         let backdropImageUrl = `https://image.tmdb.org/t/p/original${randomBackdropPath}`;
-        Featured.style.backgroundImage = `    linear-gradient(to right, black,rgba(0, 0, 0, 0)), url('${backdropImageUrl}')`;
+        Featured.style.backgroundImage = `linear-gradient(to right, black,rgba(0, 0, 0, 0)), url('${backdropImageUrl}')`;
         Featured.querySelector('h2').innerHTML = response.results[randomIndex].name;
-        Featured.querySelector('.genres').innerHTML+=`<span>${response.results[randomIndex].vote_average}/10</span>`;
-        let genrelist="";
+        Featured.querySelector('.genres').innerHTML += `<span>${response.results[randomIndex].vote_average}/10</span>`;
+        let genrelist = "";
         response.results[randomIndex].genre_ids.forEach(element => {
-             genrelist+=genres[element]+", ";
+            genrelist += genres[element] + ", ";
         });
-        Featured.querySelector('.genres').innerHTML+=genrelist.slice(0,genrelist.length-2);
+        Featured.querySelector('.genres').innerHTML += genrelist.slice(0, genrelist.length - 2);
         Featured.querySelector('.overview').innerHTML = response.results[randomIndex].overview;
     })
     .catch(err => console.error(err));
@@ -62,16 +63,25 @@ fetch(topRated + String(Math.floor(Math.random() * 10) + 1), options)
     .then(response => {
         let MovieTray = document.querySelector('.topRated .movieTray');
         response.results.forEach(element => {
-            MovieTray.innerHTML += `
-            <div class="card">
-                    <img src="https://image.tmdb.org/t/p/original${element.poster_path}" alt="">
-                    <div class="movieDesc">
-                    <img class="play" src="/assets/Polygon 1.svg">
+            if (!element.poster_path) {
+                MovieTray.innerHTML +=
+                    `<div class="card">
+            <img src="/assets/blank.svg" alt="">
+            <div class="movieDesc">
+                <p class="vote">${(Number(element.vote_average)).toFixed(1)}/10</p>
+                <p>${element.name}</p>
+            </div>`
+            }
+            else {
+                MovieTray.innerHTML += `
+                <div class="card">
+                <img src="${image}${element.poster_path}" alt="">
+                <div class="movieDesc">
+                    <p class="vote">${(Number(element.vote_average)).toFixed(1)}/10</p>
                     <p>${element.name}</p>
-                    </div>
                 </div>
-            `
-            console.log(element)
+            `}
+            console.log(element);
         });
     })
     .catch(err => console.error(err));
@@ -83,16 +93,25 @@ fetch(popular + String(Math.floor(Math.random() * 10) + 1), options)
     .then(response => {
         let MovieTray = document.querySelector('.popular .movieTray');
         response.results.forEach(element => {
-            MovieTray.innerHTML += `
-            <div class="card">
-                    <img src="https://image.tmdb.org/t/p/original${element.poster_path}" alt="">
-                    <div class="movieDesc">
-                    <img class="play" src="/assets/Polygon 1.svg">
+            if (!element.poster_path) {
+                MovieTray.innerHTML +=
+                    `<div class="card">
+            <img src="/assets/blank.svg" alt="">
+            <div class="movieDesc">
+                <p class="vote">${(Number(element.vote_average)).toFixed(1)}/10</p>
+                <p>${element.name}</p>
+            </div>`
+            }
+            else {
+                MovieTray.innerHTML += `
+                <div class="card">
+                <img src="${image}${element.poster_path}" alt="">
+                <div class="movieDesc">
+                    <p class="vote">${(Number(element.vote_average)).toFixed(1)}/10</p>
                     <p>${element.name}</p>
-                    </div>
                 </div>
-            `
-            console.log(element)
+            `}
+            console.log(element);
         });
     })
     .catch(err => console.error(err));
@@ -105,15 +124,24 @@ fetch(tv + String(Math.floor(Math.random() * 10) + 1), options)
     .then(response => {
         let MovieTray = document.querySelector('.tv .movieTray');
         response.results.forEach(element => {
-            MovieTray.innerHTML += `
+            if (!element.poster_path) {
+                MovieTray.innerHTML +=
+                    `<div class="card">
+            <img src="/assets/blank.svg" alt="">
+            <div class="movieDesc">
+                <p class="vote">${(Number(element.vote_average)).toFixed(1)}/10</p>
+                <p>${element.name}</p>
+            </div>`
+            }
+            else {
+                MovieTray.innerHTML += `
                 <div class="card">
-                    <img src="https://image.tmdb.org/t/p/original${element.poster_path}" alt="">
-                    <div class="movieDesc">
-                        <img class="play" src="/assets/Polygon 1.svg">
-                        <p>${element.name}</p>
-                    </div>
+                <img src="${image}${element.poster_path}" alt="">
+                <div class="movieDesc">
+                    <p class="vote">${(Number(element.vote_average)).toFixed(1)}/10</p>
+                    <p>${element.name}</p>
                 </div>
-            `;
+            `}
             console.log(element);
         });
     })
