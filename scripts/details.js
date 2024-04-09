@@ -96,6 +96,7 @@ else if (idparams.get("tv")) {
           <li>
           <img src="/assets/blankCast.svg"/>
           <p>${response.cast[i].name}</p>
+          <p>${response.cast[i].character}</p>
           </li>
     `;
             }
@@ -104,6 +105,7 @@ else if (idparams.get("tv")) {
           <li>
           <img src="${images}${response.cast[i].profile_path}"/>
           <p>${response.cast[i].name}</p>
+          <p>${response.cast[i].character}</p>
           </li>
     `;
             };
