@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="/assets/favicon.svg" type="image/x-icon">
-    <script defer src="/scripts/api.js"></script>
-    <script defer src="/scripts/scroll.js"></script>
-    <title>BingeBox</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/script.js"></script>
+    <title>Document</title>
 </head>
 
 <body>
@@ -17,68 +15,85 @@
             <img src="/assets/favicon.svg" alt="" srcset="">
             <h1>BingeBox</h1>
         </div>
-        <textarea class="search" placeholder="Search movies or Tv Shows" rows="1" name="search">
+        <div class="search">
+            <div class="search-bar">
+            <input class="search" placeholder="Search movies or Tv Shows" rows="1" name="search">
 
-        </textarea><button>search</button>
+        </input><button>search</button>
+        </div>
+        <div class="query-list">
+            
+        </div>
+        </div>
+        
+        
         <ul id="Nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#"><img src="/assets/account.svg" alt=""></a></li>
         </ul>
     </nav>
+
     <div class="featured">
         <div class="featured-name">
             <img src="/assets/play.svg" alt="">
-            <h2></h2>
+            <h2>Love, Victor</h2>
         </div>
         <p class="genres"></p>
         <p class="overview"></p>
     </div>
-    <section class="wrapper">
-        <div class="topRated">
-            <div class="heading">
-                <div class="genreTitle">Top Rated</div>
-                <ul>
-                    <li><button class="scrollBtnleft"><img src="/assets/left.svg" alt=""></button> </li>
-                    <li><button class="scrollBtnright"><img src="/assets/right.svg" alt=""></button></li>
-                </ul>
+
+    <div class="Wrapper">
+        <div class="TopRated movie-strip">
+            <div class="movie-strip-top">
+                <h1>Top Rated Movies</h1>
             </div>
-            <div class="movieTray">
-
-
-
+            <div class="movie-strip-bottom">
+                <button class="LeftBt"><img src="/assets/left.svg">
+                </button>
+                <div class="panel"></div>
+                <button class="RightBt"><img src="/assets/right.svg" alt=""></button>
             </div>
+
         </div>
 
-        <div class="popular">
-            <div class="heading">
-                <div class="genreTitle">Popular</div>
-                <ul>
-                    <li><button class="scrollBtnleft"><img src="/assets/left.svg" alt=""></button> </li>
-                    <li><button class="scrollBtnright"><img src="/assets/right.svg" alt=""></button></li>
-                </ul>
+        <div class="TvShows movie-strip">
+            <div class="movie-strip-top">
+                <h1>Top Rated Tv Shows</h1>
             </div>
-            <div class="movieTray">
-
+            <div class="movie-strip-bottom">
+                <button class="LeftBt"><img src="/assets/left.svg">
+                </button>
+                <div class="panel"></div>
+                <button class="RightBt"><img src="/assets/right.svg" alt=""></button>
+            </div>
+            <div class="PopularTv movie-strip">
+                <div class="movie-strip-top">
+                    <h1>Popular Tv Shows</h1>
+                </div>
+                <div class="movie-strip-bottom">
+                    <button class="LeftBt"><img src="/assets/left.svg">
+                    </button>
+                    <div class="panel"></div>
+                    <button class="RightBt"><img src="/assets/right.svg" alt=""></button>
+                </div>
 
             </div>
+            <div class="PopularMovie movie-strip">
+                <div class="movie-strip-top">
+                    <h1>Popular Movies</h1>
+                </div>
+                <div class="movie-strip-bottom">
+                    <button class="LeftBt"><img src="/assets/left.svg">
+                    </button>
+                    <div class="panel"></div>
+                    <button class="RightBt"><img src="/assets/right.svg" alt=""></button>
+                </div>
+
+            </div>
+
         </div>
+    </div>
 
-        <div class="tv">
-            <div class="heading">
-                <div class="genreTitle">Tv Shows</div>
-                <ul>
-                    <li><button class="scrollBtnleft"><img src="/assets/left.svg" alt=""></button> </li>
-                    <li><button class="scrollBtnright"><img src="/assets/right.svg" alt=""></button></li>
-                </ul>
-            </div>
-            <div class="movieTray">
-
-
-            </div>
-        </div>
-
-        </div>`
-    </section>
 </body>
 
 </html>
