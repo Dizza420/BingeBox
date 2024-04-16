@@ -1,34 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-body{
+
+body {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
     overflow-x: hidden;
-    background-color: #0F0919;
+    background-color: #191b25;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+::-webkit-scrollbar {
+    background-color: transparent;
+    height: 10px;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #494848;
+}
+
 nav {
     margin: 10px;
     padding: 0 15px;
     border-radius: 30px;
     box-sizing: border-box;
-    background: linear-gradient(to right, rgba(22, 0, 59, 1), rgba(34, 0, 50, 1));
+    /* background: linear-gradient(to right, rgb(24 4 6), rgb(47 4 8)); */
     color: aliceblue;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.search{
+
+.search-wrapper {
     margin-left: auto;
 }
+
 nav input {
-    
     width: 500px;
     box-sizing: border-box;
     padding: 10px;
     color: #ffffff;
-    background-color: #31065A;
+    background-color: #3333335c;
     border-radius: 50px 0 0 50px;
-    border: none;
+    border: 1px solid;
+    border-right: 0;
     resize: none;
 }
 
@@ -42,21 +58,21 @@ nav input:focus-visible {
 
 nav input::placeholder {
 
-    color: #6b13bd;
+    color: #a1a1a1;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
 }
 
-nav button {
-    text-align: center;
-    margin-top: 12px;
-    border: none;
-    margin-left:-10px ;
-    background-color: #31065A;
-    color: #eeeeee;
-    height: 37px;
-    padding: 0 10px;
-    border-radius: 0 50px 50px 0;
+nav .search-bt {
+    display: inline;
+    z-index: 2;
+    position: absolute;
+    /* margin-right: -22px; */
+    border: 1px solid white;
+    padding: 7px 16px;
+    border-radius: 0 20px 20px 0;
+    border-left: none;
+    background-color: #3333335c;
 }
 
 nav ul {
@@ -77,22 +93,33 @@ nav ul li a {
 }
 
 nav ul li img {
-    height: 50px;
+    height: 36px;
 }
- 
+.Wrapper{
+    display: flex;
+    padding: 100px 54px;
+    gap: 100px;
+    flex-direction: column;
+}
 .featured {
-    margin: 30px 50px;
+    margin: 21px 75px;
     display: flex;
     font-size: 20px;
+    cursor: pointer;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 50px;
+    padding: 0px 43px;
     color: #d4d4d4;
     border-radius: 20px;
-    height: 500px;
+    height: 738px;
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: end;
+}
+
+.movie-strip-top h1 {
+    font-size: 40px;
+    color: #a7a7a7;
 }
 
 .featured-name {
@@ -114,6 +141,7 @@ nav ul li img {
 .featured .overview {
     height: 100px;
     overflow: scroll;
+    margin-bottom: 89px;
     width: 500px;
 }
 
@@ -126,50 +154,134 @@ nav ul li img {
     align-items: center;
     gap: 10px;
     font-weight: 900;
-    background: linear-gradient(230deg, rgb(161, 10, 211), blue);
+    /* background: linear-gradient(230deg, rgb(161, 10, 211), blue); */
     -moz-background-clip: text;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    /* -webkit-text-fill-color: transparent; */
+    color: white;
 }
-
-#Title>img {
-    height: 50px;
+#Title>a{
+    text-decoration: none;
 }
-
-#Title h1 {
+#Title>a>h1{
+    
+    color: white;
     font-size: 27px;
 }
-.Wrapper{
+.card-Wrapper {
     display: flex;
     flex-direction: column;
     gap: 70px;
     padding: 30px;
 }
-.movie-strip-top>h1{
-    margin-left: 40px;
-    color: #b1b1b1;
-}
-.movie-strip-bottom{
+
+
+.movie-strip-bottom {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.card>a{
+.card{
+    border-radius: 20px;
+}
+.card-wrapper {
+    /* display: inline-flex; */
+    width: 100%;
+    height: 436px;
+    display: list-item;
+}
+
+.card-wrapper .card {
+    position: relative;
+    font-size: 14px;
+    line-height: 21px;
+    /* width: 285px; */
+    height: 436px;
+    overflow: hidden;
+    transition: 0.5s ease all;
+}
+
+.card-wrapper .card .card-content {
+    width: 100%;
+    font-size: 18px;
+    position: absolute;
+    bottom: 0;
+    color: antiquewhite;
+    padding: 50px 10px 7px;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) , rgb(0, 0, 0) 90%);
+    transition: inherit;
+}
+
+.card-wrapper .card .card-content .card-header {
+    padding: 8px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-wrapper .card .card-content .desc {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: inherit;
+}
+
+.card-wrapper .card:hover {
+    cursor: pointer;
+}
+
+.card-wrapper .card:hover .card-content {
+    background-image: linear-gradient(180deg,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.635) , rgb(0, 0, 0) 90%);
+}
+.card:hover .card-content{
+    background-image: linear-gradient(180deg, rgb(0, 0, 0) , rgb(0, 0, 0) 90%);
+}
+.card-wrapper .card:hover .desc {
+    max-height: 200px;
+    padding: 8px 0;
+    opacity: 1;
+}
+.card:hover .poster{
+    scale: 1.2;
+    backdrop-filter:blur(2px) ;
+}
+.poster {
+    transition: 0.9s;
+    height: 400px;
+    width: 300px;
+    object-fit: cover;
+    background-position: center;
+    border-radius: 20px;
+    background-size: cover;
+}
+
+.card>a {
     text-decoration: none;
 }
-.panel{
-    width: 99vw;
+
+.panel {
+    width: 98vw;
     overflow: scroll;
     scroll-behavior: smooth;
     display: flex;
-    gap: 10px;
+    gap: 44px;
 }
-.panel::-webkit-scrollbar{
+
+.panel::-webkit-scrollbar {
     display: none;
 }
-.card>.card-link>div{
+
+.res {
+    transition: background-color 0.9s;
+}
+
+.res:hover {
+    transition: background-color 0.9s;
+    background-color: #4f4f4f;
+    cursor: pointer;
+}
+
+.card>div.title {
     position: relative;
     margin-top: -210px;
     font-size: 20px;
@@ -183,31 +295,109 @@ nav ul li img {
     justify-content: end;
     color: #d4d4d4;
 }
-button{
-    display: inline-flex;
+
+.LeftBt {
+    display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    cursor:pointer;
-    border-radius: 200px;
-    background-color: #535353;
+    border-radius: 25px;
+    cursor: pointer;
+    background: #271e3d;
     color: #ffffff;
-    height: 50px;
-    width: 60px;
-    margin: 0 20px;
+    height: 53px;
+    width: 59px;
+    z-index: 2;
+    position: absolute;
+    left: 62px;
+    /* margin-bottom: -24px; */
+    /* margin-top: -25px; */
     transition: background-color 0.9s;
 }
-button:hover{
+.vote{
+    font-weight: 600;
+}
+.LeftBt>img ,.RightBt>img{
+    height: 20px;
+}
+.RightBt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    cursor: pointer;
+    background: #271e3d;
+    color: #ffffff;
+    height: 53px;
+    position: absolute;
+    width: 59px;
+    z-index: 2;
+    right: 83px;
+    /* margin-bottom: -24px; */
+    /* margin-top: -25px; */
     transition: background-color 0.9s;
-    background-color: #1f1f1f;
 }
-button>img{
-height: 20px;
+
+nav button:hover {
+    transition: background-color 1.5s;
+    background-color: #494848;
 }
-.card img{
-    height: 300px;
+
+button:hover {
+    background-color: #000000;
+}
+
+button>img {
+    margin: 0;
+    padding: 0;
+    height: 10px;
+}
+
+.card img {
+    height: 436px;
     border-radius: 20px;
 }
-.card p{
+
+.card p {
     border-radius: 20px;
+}
+
+.genres {
+    margin: 10px 0;
+}
+
+.query-list {
+    position: absolute;
+    border-radius: 20px;
+    color: #8a8484;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #333333;
+    display: flex;
+    width: 550px;
+    flex-direction: column;
+}
+
+.query-list::-webkit-scrollbar {
+    background-color: transparent;
+    height: 10px;
+    width: 10px;
+}
+
+.query-list::-webkit-scrollbar-thumb {
+    background-color: #565656;
+}
+
+.query-list>div {
+    padding: 10px;
+}
+
+@keyframes bg {
+    from {
+        background-color: #535353;
+    }
+
+    to {
+        background-color: #272626;
+    }
 }

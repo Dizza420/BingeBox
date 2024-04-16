@@ -2,9 +2,11 @@
 
 body {
     margin: 0;
+    height: 100vh;
     padding: 0;
     font-family: 'Lato', sans-serif;
     overflow-x: hidden;
+    color: #a1a1a1;
     background-color: #131313;
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,7 +24,7 @@ body {
 
 nav {
     margin: 10px;
-    padding: 0 15px;
+    padding: 15px 15px;
     border-radius: 30px;
     box-sizing: border-box;
     /* background: linear-gradient(to right, rgb(24 4 6), rgb(47 4 8)); */
@@ -61,8 +63,9 @@ nav input {
 }
 #Title>a>h1{
     
-    color: white;
-    font-size: 27px;
+color: white;
+    
+font-size: 33px;
 }
 nav input::-webkit-scrollbar {
     display: none;
@@ -127,110 +130,12 @@ nav ul li img {
     font-size: 27px;
 }
 
-.wrapper {
-    padding: 70px 100px;
+.search-categories{
+    width: 100vw;
     display: flex;
-    gap: 40px;
-    color: aliceblue;
+    justify-content: space-evenly;
+    font-size: 26px;
 }
-
-.wrapper>img {
-    height: 300px;
-    border-radius: 20px;
-}
-
-.genres {
-    list-style-type: none;
-    display: flex;
-    gap: 10px;
-    padding: 0;
-}
-
-.genres li {
-    display: inline;
-
-    background-color: #6b13bd;
-    padding: 5px 10px;
-    border-radius: 10px;
-}
-.buttons img{
-    height: 10px;
-}
-.castMain img {
-    height: 100px;
-    border-radius: 10px;
-}
-
-.castMain {
-    padding: 0;
-    display: flex;
-    gap: 30px;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    width: 50vw;
-    height: fit-content;
-    list-style-type: none;
-}
-
-.castMain::-webkit-scrollbar {
-    background-color: transparent;
-    height: 10px;
-    width: 30px;
-}
-
-.castMain::-webkit-scrollbar-thumb {
-    background-color: #461772;
-
-}
-
-.reviews{
-    margin: 76px;
-    background-color: #050505f0;
-    color: #f8f8f8;
-    display: flex;
-    flex-direction: column;
-    padding: 34px;
-    gap: 10px;
-}
-.review{
-    
-    box-sizing: border-box;
-    padding: 31px 10px;
-}
-.review-auth{
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-.buttons, .cast, .cast-header{
-    display: flex;
-}
-.cast-header{
-    width: 50vw;
-}
-.buttons{
-    margin-left: auto;
-    gap: 10px;
-}
-.cast{
-    gap: 30px;
-    flex-direction: column;
-}
-.buttons>div{
-    background-color: #131313;
-    padding: 21px 17px;
-}
-.buttons>div>img{
-    height: 15px;
-}
-.query-list {
-    position: absolute;
-    border-radius: 20px;
-    color: #8a8484;
-    max-height: 500px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    background-color: #333333;
-    display: flex;
-    width: 550px;
-    flex-direction: column;
+.search-categories>div{
+    padding: 14px 0px;
 }

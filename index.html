@@ -5,21 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css">
-    <script defer src="/scripts/script.js"></script>
-    <title>Document</title>
+    <script type="module" src="/scripts/mainApi.js"></script>
+    <script type="module" src="/scripts/search.js"></script>
+    <title>BingeBox</title>
 </head>
 
 <body>
     <nav>
         <div id="Title">
-            <img src="/assets/favicon.svg" alt="" srcset="">
+            <a href="/">
             <h1>BingeBox</h1>
+            </a>
         </div>
-        <div class="search">
+        <div class="search-wrapper">
             <div class="search-bar">
-            <input class="search" placeholder="Search movies or Tv Shows" rows="1" name="search">
+            <input class="search" placeholder="Search here" rows="1" name="search">
 
-        </input><button>search</button>
+        </input><div class="search-bt"><img src="/assets/search.svg" alt=""/></div>
         </div>
         <div class="query-list">
             
@@ -32,7 +34,7 @@
             <li><a href="#"><img src="/assets/account.svg" alt=""></a></li>
         </ul>
     </nav>
-
+    
     <div class="featured">
         <div class="featured-name">
             <img src="/assets/play.svg" alt="">
@@ -48,10 +50,10 @@
                 <h1>Top Rated Movies</h1>
             </div>
             <div class="movie-strip-bottom">
-                <button class="LeftBt"><img src="/assets/left.svg">
-                </button>
+                <div class="LeftBt"><img src="/assets/left.svg">
+                </div>
                 <div class="panel"></div>
-                <button class="RightBt"><img src="/assets/right.svg" alt=""></button>
+                <div class="RightBt"><img src="/assets/right.svg" alt=""></div>
             </div>
 
         </div>
@@ -61,34 +63,36 @@
                 <h1>Top Rated Tv Shows</h1>
             </div>
             <div class="movie-strip-bottom">
-                <button class="LeftBt"><img src="/assets/left.svg">
-                </button>
+                <div class="LeftBt"><img src="/assets/left.svg">
+                </div>
                 <div class="panel"></div>
-                <button class="RightBt"><img src="/assets/right.svg" alt=""></button>
+                <div class="RightBt"><img src="/assets/right.svg" alt=""></div>
             </div>
-            <div class="PopularTv movie-strip">
-                <div class="movie-strip-top">
-                    <h1>Popular Tv Shows</h1>
-                </div>
-                <div class="movie-strip-bottom">
-                    <button class="LeftBt"><img src="/assets/left.svg">
-                    </button>
-                    <div class="panel"></div>
-                    <button class="RightBt"><img src="/assets/right.svg" alt=""></button>
-                </div>
+            
 
+        </div>
+
+        <div class="PopularTv movie-strip">
+            <div class="movie-strip-top">
+                <h1>Popular Tv Shows</h1>
             </div>
-            <div class="PopularMovie movie-strip">
-                <div class="movie-strip-top">
-                    <h1>Popular Movies</h1>
+            <div class="movie-strip-bottom">
+                <div class="LeftBt"><img src="/assets/left.svg">
                 </div>
-                <div class="movie-strip-bottom">
-                    <button class="LeftBt"><img src="/assets/left.svg">
-                    </button>
-                    <div class="panel"></div>
-                    <button class="RightBt"><img src="/assets/right.svg" alt=""></button>
-                </div>
+                <div class="panel"></div>
+                <div class="RightBt"><img src="/assets/right.svg" alt=""></div>
+            </div>
 
+        </div>
+        <div class="PopularMovie movie-strip">
+            <div class="movie-strip-top">
+                <h1>Popular Movies</h1>
+            </div>
+            <div class="movie-strip-bottom">
+                <div class="LeftBt"><img src="/assets/left.svg">
+                </div>
+                <div class="panel"></div>
+                <div class="RightBt"><img src="/assets/right.svg" alt=""></div>
             </div>
 
         </div>
