@@ -1,21 +1,12 @@
-import ApiKey from "./mainApi.js";
+import {ApiKey,options,tvDetails,movieDetails,person,images} from "./essentials.js";
 const wrapper = document.querySelector(".wrapper");
 const idparams = new URLSearchParams(window.location.search);
-const searchTv = "https://api.themoviedb.org/3/tv/";
-const searchMovie = "https://api.themoviedb.org/3/movie/";
-const images = "https://image.tmdb.org/t/p/original/";
-let options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${ApiKey}`
-  }
-};
+
 
 
 if (idparams.get("movie")) {
   var id = idparams.get("movie");
-  fetch(`${searchMovie}${id}`,options)
+  fetch(`${movieDetails}${id}`,options)
     .then(response => response.json())
     .then(response => {
       document.body.style.background = `linear-gradient(to right, rgb(0 0 0 / 59%), rgb(0 0 0 / 59%)),url(${images}${response.poster_path})`;
@@ -88,7 +79,11 @@ if (idparams.get("movie")) {
             castChar.classList.add("cast-char");
             castChar.innerHTML=`${response.cast[i].character}`;
             castCard.appendChild(castChar);
-
+            castCard.addEventListener("click",()=>{
+              window.location.href=`/details.html?person=${response.cast[i].id}`;
+            });
+            
+            
           };
 
           cast.appendChild(castMain);
@@ -141,7 +136,7 @@ if (idparams.get("movie")) {
 }
 else if (idparams.get("tv")) {
   var id = idparams.get("tv");
-  fetch(`${searchTv}${id}`,options)
+  fetch(`${tvDetails}${id}`,options)
     .then(response => response.json())
     .then(response => {
       document.body.style.background = `linear-gradient(to right, rgb(0 0 0 / 59%), rgb(0 0 0 / 59%)),url(${images}${response.backdrop_path})`;
@@ -213,6 +208,10 @@ else if (idparams.get("tv")) {
             castChar.classList.add("cast-char");
             castChar.innerHTML=`${response.cast[i].character}`;
             castCard.appendChild(castChar);
+            castCard.addEventListener("click",()=>{
+              window.location.href=`/details.html?person=${response.cast[i].id}`;
+            });
+            
 
           };
 
@@ -260,6 +259,31 @@ else if (idparams.get("tv")) {
 
         })
       document.body.appendChild(reviews);
+      console.log(response);
+    })
+    .catch(err => console.error(err));
+}
+else if (idparams.get("person")) {
+  var id = idparams.get("person");
+  fetch(`${person}${id}`,options)
+    .then(response => response.json())
+    .then(response => {
+      
+
+      const poster=document.createElement("img");
+      poster.src = `${images}${response.profile_path}`;
+      poster.loading="lazy";
+      poster.classList.add("poster");
+      wrapper.appendChild(poster);
+
+      const val = document.createElement("div");
+      val.innerHTML += `
+      <h1>${response.name}</h1>
+      <p>${(response.biography) ? response.biography : "Nothing Available"}</p>
+      `;
+      
+     
+      wrapper.appendChild(val);
       console.log(response);
     })
     .catch(err => console.error(err));

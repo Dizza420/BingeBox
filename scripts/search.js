@@ -1,15 +1,7 @@
-import ApiKey from "./mainApi.js";
-const movieSearchURL = "https://api.themoviedb.org/3/search/movie?query=";
-const tvSearchURL = "https://api.themoviedb.org/3/search/tv?query=";
+import {ApiKey,options,movieSearchURL,tvSearchURL} from "./essentials.js";
+
 const queryList = document.querySelector(".query-list");
 const searchbar = document.querySelector(".search");
-let options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${ApiKey}`
-  }
-};
 
 function searchMovies(searchTerm) {
   fetch(`${movieSearchURL}${searchTerm}`, options)

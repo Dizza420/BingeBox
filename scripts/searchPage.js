@@ -1,16 +1,5 @@
-import ApiKey from "./mainApi.js";
-import { tvSearchURL, movieSearchURL } from "./search.js";
-const peopleSearchURL="https://api.themoviedb.org/3/search/person?query=";
-const collectionsSearchURL="https://api.themoviedb.org/3/search/collection?query=";
-const companiesSearchURL="https://api.themoviedb.org/3/search/company?query=";
+import { ApiKey, tvSearchURL, movieSearchURL, peopleSearchURL, collectionsSearchURL, companiesSearchURL, options, images } from "./essentials.js";
 
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${ApiKey}`
-    }
-};
 const idparams = new URLSearchParams(window.location.search);
 const query = idparams.get("query");
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,87 +18,227 @@ document.addEventListener("DOMContentLoaded", () => {
     let companiesStatus = 0;
 
     function fetchResults(searchURL) {
-        fetch(searchURL + query, options)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const results = data.results;
-                displayResults(results);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-    };
-    
-    function displayResults(results) {
-       
-        result.innerHTML = ""; 
-        for (let i = 0; i < results.length; i++) {
-            const resultCard = document.createElement("div");
-            resultCard.classList.add("result-card");
-            resultCard.innerHTML = `${result.name}`;
-            result.appendChild(resultCard);
-            
+        if (searchURL === tvSearchURL) {
+            fetch(searchURL + query, options)
+                .then(response =>  response.json())
+                .then(response=>response.results)
+                .then(response => {
+                    result.innerHTML = "";
+                    for (let i = 0; i < response.length; i++) {
+                        const resultCard = document.createElement("div");
+                        resultCard.classList.add("result-card");
+                        let poster = document.createElement("img");
+                        poster.classList.add("poster");
+                        poster.src=`${images}${response[i].poster_path}`;
+                        resultCard.appendChild(poster);
+                        let name =document.createElement("div");
+                        name.classList.add("name");
+                        name.innerText=`${response[i].name}`;
+                        resultCard.appendChild(name); 
+                        result.appendChild(resultCard);
+                        resultCard.addEventListener("click",()=>{
+                            window.location.href=`/details.html?tv=${response[i].id}`;
+                        });
+
+                    }
+                })
+                .catch(error => console.error());
+                
+        }
+        else if (searchURL === movieSearchURL) {
+            fetch(searchURL + query, options)
+                .then(response =>  response.json())
+                .then(response=>response.results)
+                .then(response => {
+                    result.innerHTML = "";
+                    for (let i = 0; i < response.length; i++) {
+                        const resultCard = document.createElement("div");
+                        resultCard.classList.add("result-card");
+                        let poster = document.createElement("img");
+                        poster.classList.add("poster");
+                        poster.src=`${images}${response[i].poster_path}`;
+                        resultCard.appendChild(poster);
+                        let name =document.createElement("div");
+                        name.classList.add("name");
+                        name.innerText=`${response[i].title}`;
+                        resultCard.appendChild(name); 
+                        result.appendChild(resultCard);
+                        resultCard.addEventListener("click",()=>{
+                            window.location.href=`/details.html?movie=${response[i].id}`;
+                        });
+
+                    }
+                })
+                .catch(error => console.error());
+                
+        }
+        else if (searchURL === collectionsSearchURL) {
+            fetch(searchURL + query, options)
+                .then(response =>  response.json())
+                .then(response=>response.results)
+                .then(response => {
+                    result.innerHTML = "";
+                    for (let i = 0; i < response.length; i++) {
+                        const resultCard = document.createElement("div");
+                        resultCard.classList.add("result-card");
+                        let poster = document.createElement("img");
+                        poster.classList.add("poster");
+                        poster.src=`${images}${response[i].poster_path}`;
+                        resultCard.appendChild(poster);
+                        let name =document.createElement("div");
+                        name.classList.add("name");
+                        name.innerText=`${response[i].name}`;
+                        resultCard.appendChild(name); 
+                        result.appendChild(resultCard);
+                        resultCard.addEventListener("click",()=>{
+                            window.location.href=`/details.html?tv=${response[i].id}`;
+                        });
+
+                    }
+                })
+                .catch(error => console.error());
+                
+        }
+        else if (searchURL === peopleSearchURL) {
+            fetch(searchURL + query, options)
+                .then(response =>  response.json())
+                .then(response=>response.results)
+                .then(response => {
+                    result.innerHTML = "";
+                    for (let i = 0; i < response.length; i++) {
+                        const resultCard = document.createElement("div");
+                        resultCard.classList.add("result-card");
+                        let poster = document.createElement("img");
+                        poster.classList.add("poster");
+                        poster.src=`${images}${response[i].profile_path}`;
+                        resultCard.appendChild(poster);
+                        let name =document.createElement("div");
+                        name.classList.add("name");
+                        name.innerText=`${response[i].name}`;
+                        resultCard.appendChild(name); 
+                        result.appendChild(resultCard);
+                        resultCard.addEventListener("click",()=>{
+                            window.location.href=`/details.html?person=${response[i].id}`;
+                        });
+
+                    }
+                })
+                .catch(error => console.error());
+                
+        }
+        else if (searchURL === companiesSearchURL) {
+            fetch(searchURL + query, options)
+                .then(response =>  response.json())
+                .then(response=>response.results)
+                .then(response => {
+                    result.innerHTML = "";
+                    for (let i = 0; i < response.length; i++) {
+                        const resultCard = document.createElement("div");
+                        resultCard.classList.add("result-card");
+                        let logo = document.createElement("img");
+                        logo.classList.add("logo");
+                        logo.src=`${images}${response[i].logo_path}`;
+                        resultCard.appendChild(logo);
+                        let name =document.createElement("div");
+                        name.classList.add("name");
+                        name.innerText=`${response[i].name}`;
+                        resultCard.appendChild(name); 
+                        result.appendChild(resultCard);
+                        resultCard.addEventListener("click",()=>{
+                            window.location.href=`/details.html?tv=${response[i].id}`;
+                        });
+
+                    }
+                })
+                .catch(error => console.error());
+                
+        }
+        else if (searchURL === peopleSearchURL) {
+            fetch(searchURL + query, options)
+                .then(response =>  response.json())
+                .then(response=>response.results)
+                .then(response => {
+                    result.innerHTML = "";
+                    for (let i = 0; i < response.length; i++) {
+                        const resultCard = document.createElement("div");
+                        resultCard.classList.add("result-card");
+                        let poster = document.createElement("img");
+                        poster.classList.add("poster");
+                        poster.src=`${images}${response[i].poster_path}`;
+                        resultCard.appendChild(poster);
+                        let name =document.createElement("div");
+                        name.classList.add("name");
+                        name.innerText=`${response[i].name}`;
+                        resultCard.appendChild(name); 
+                        result.appendChild(resultCard);
+                        resultCard.addEventListener("click",()=>{
+                            window.location.href=`/details.html?person=${response[i].id}`;
+                        });
+
+                    }
+                })
+                .catch(error => console.error());
+                
         }
     };
+
     tv.addEventListener("click", () => {
-        tvStatus=1;
-        movieStatus=0;
-        peopleStatus=0;
-        collectionsStatus=0;
-        companiesStatus=0;
+        tvStatus = 1;
+        movieStatus = 0;
+        peopleStatus = 0;
+        collectionsStatus = 0;
+        companiesStatus = 0;
+        if (tvStatus === 1) {
+            fetchResults(tvSearchURL);
+        }
     });
 
     movie.addEventListener("click", () => {
-        tvStatus=0;
-        movieStatus=1;
-        peopleStatus=0;
-        collectionsStatus=0;
-        companiesStatus=0;
+        tvStatus = 0;
+        movieStatus = 1;
+        peopleStatus = 0;
+        collectionsStatus = 0;
+        companiesStatus = 0;
+        if (movieStatus === 1) {
+            fetchResults(movieSearchURL);
+        }
     });
 
     people.addEventListener("click", () => {
-        tvStatus=0;
-        movieStatus=0;
-        peopleStatus=1;
-        collectionsStatus=0;
-        companiesStatus=0;
+        tvStatus = 0;
+        movieStatus = 0;
+        peopleStatus = 1;
+        collectionsStatus = 0;
+        companiesStatus = 0;
+        if (peopleStatus === 1) {
+            fetchResults(peopleSearchURL);
+        }
     });
 
     collections.addEventListener("click", () => {
-        tvStatus=0;
-        movieStatus=0;
-        peopleStatus=0;
-        collectionsStatus=1;
-        companiesStatus=0;
+        tvStatus = 0;
+        movieStatus = 0;
+        peopleStatus = 0;
+        collectionsStatus = 1;
+        companiesStatus = 0;
+        console.log("ok");
+        if (collectionsStatus === 1) {
+            fetchResults(collectionsSearchURL);
+        }
     });
 
     companies.addEventListener("click", () => {
-        tvStatus=0;
-        movieStatus=0;
-        peopleStatus=0;
-        collectionsStatus=0;
-        companiesStatus=1;
+        tvStatus = 0;
+        movieStatus = 0;
+        peopleStatus = 0;
+        collectionsStatus = 0;
+        companiesStatus = 1;
+        if (companiesStatus === 1) {
+            fetchResults(companiesSearchURL);
+        }
     });
 
-if (tvStatus===1) {
-    fetchResults(tvSearchURL);
-}
-else if (movieStatus) {
-    fetchResults(movieSearchURL);
-}
-else if (peopleStatus) {
-    fetchResults(peopleSearchURL);
-}
-else if (collectionsStatus) {
-    fetchResults(collectionsSearchURL);
-}
-else if (companiesStatus) {
-    fetchResults(companiesSearchURL);
-}
+
+
 
 })

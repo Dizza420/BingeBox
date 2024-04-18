@@ -1,25 +1,16 @@
-const ApiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MzU2MTFiNGRhMzlkNTdjOGU5YzdhNTExZDliMjhjMSIsInN1YiI6IjY1MzM3ZTE3OTFmMGVhMDEzODg3YmNlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7BKdzzFARfi0cIvewGbOzWRFTjNn0Fqpa6HOSxLMcVE";
+import { ApiKey,options,TopRated,PopularTv,PopularMovie,images,tv} from "./essentials.js";
 document.addEventListener("DOMContentLoaded", () => {
     
-    const TopRated = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=';
-    const PopularTv = 'https://api.themoviedb.org/3/tv/popular?language=en-US&page=';
-    const PopularMovie = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=';
-    const tv = "https://api.themoviedb.org/3/discover/tv?language=en-US&page="
+    
     const topPanel = document.querySelector(".TopRated .panel");
     const popTvPanel = document.querySelector(".PopularTv .panel");
     const popMoviePanel = document.querySelector(".PopularMovie .panel");
     const tvPanel = document.querySelector(".TvShows .panel");
-    const images = "https://image.tmdb.org/t/p/original";
+    
     let allMovieTray = document.querySelectorAll('.panel');
     let scrollbtnleftall = document.querySelectorAll('.LeftBt');
     let scrollbtnrightall = document.querySelectorAll('.RightBt');
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${ApiKey}`
-        }
-    };
+    
     function voteEval(vote, target) {
         if (Number(vote) < 5) {
             target.style.color = "red";
@@ -366,4 +357,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
-export default ApiKey;

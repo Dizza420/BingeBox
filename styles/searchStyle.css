@@ -139,3 +139,22 @@ nav ul li img {
 .search-categories>div{
     padding: 14px 0px;
 }
+.result{
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    padding: 83px;
+}
+.result-card{
+    display: flex;
+    gap: 70px;
+}
+.poster{
+    height: 300px;
+}
+.name{
+    font-size: 21px;
+}
+.logo{
+    height: 100px;
+}
